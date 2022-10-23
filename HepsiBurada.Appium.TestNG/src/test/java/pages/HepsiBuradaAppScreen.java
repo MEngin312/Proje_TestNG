@@ -36,6 +36,13 @@ public class HepsiBuradaAppScreen {
     public MobileElement hesabimEkraniniKapatma;
     @AndroidFindBy(id = "com.pozitron.hepsiburada:id/etSearchBox")
     public MobileElement aramaKutucugu;
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/tv_product_list_item_name")
+    public List<MobileElement> urunBaslikListesi;
+
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/atcb_product_list_item_add_to_cart")
+    public List<MobileElement> sepetEkleList;
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/atcb_product_variant")
+    public MobileElement ikinciSepetEklemeAcilanPencere;
 
 
 

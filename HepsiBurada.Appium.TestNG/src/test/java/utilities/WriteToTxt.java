@@ -29,7 +29,7 @@ public class WriteToTxt {
     }
 
 
-    public static void saveAlldataList(String filename, List<String> baslık){
+    public static void saveAlldataList(String filename, List<String> baslik){
 
 
         try {
@@ -38,8 +38,8 @@ public class WriteToTxt {
 
             BufferedWriter writer = new BufferedWriter(fileWriter);
 
-            for (int i = 0; i <baslık.size() ; i++) {
-                writer.append(baslık.get(i)+ ", \n");
+            for (int i = 0; i <baslik.size() ; i++) {
+                writer.append(baslik.get(i)+ ", \n");
 
             }
 

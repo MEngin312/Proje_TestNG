@@ -8,12 +8,12 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HepsiBuradaAppScreen;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReadTxt;
 import utilities.WriteToTxt;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static utilities.ReusableMethods.*;
@@ -22,14 +22,208 @@ public class HepsiBuradaApp {
 
     HepsiBuradaAppScreen hb=new HepsiBuradaAppScreen();
    TouchAction touchAction = new TouchAction(Driver.getAppiumDriver());
-    String baslikDosyasi =System.getProperty("user.dir")+"\\src\\test\\java\\testData\\baslikYazisi.txt";
-    String secilenUrunDosyasi =System.getProperty("user.dir")+"\\src\\test\\java\\testData\\secilenUrunList.txt";
-    String fiyatDosyasi=System.getProperty("user.dir")+"\\src\\test\\java\\testData\\urunFiyatList.txt";
+  String  SaticiDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("SaticiDosyasi");
+ String   secilenUrunDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("secilenUrunDosyasi");
+  String  fiyatDosyasi=System.getProperty("user.dir")+ConfigReader.getProperty("fiyatDosyasi");
     @Test
     public void KullaniciOlarakTest(){
-        Driver.getAppiumDriver();
+    Driver.getAppiumDriver();
+        try {
+            if (hb.hesabimEmail.isDisplayed()){
+                scrollDown();
+            }
+        } catch (Exception e) {
+            System.out.println("hesabim ssayfasina gidiyor");
+        }
+
         tapOn(hb.hesabim);
-        tapOn(hb.hesabimGiris);
+       tapOn(hb.hesabimGiris);
+        enterText(hb.hesabimEmail,"java.team.qa.2022@gmail.com");
+        tapOn(hb.emailGiris);
+        waitJava(3);
+        enterText(hb.hesabimSifre,"123456a.A");
+        tapOn(hb.sifreGiris);
+        waitJava(3);
+        tapOn(hb.tamamButonu);
+
+        assertAll(hb.fullName,"Ayüzbir Harcabitmez");
+        tapOn(hb.hesabimEkraniniKapatma);
+        tapOn(hb.aramaKutucugu);
+
+
+        enterText(hb.aramaKutucugu,"şemsiye");
+        waitJava(2);
+        touchAction.tap(PointOption.point(940,2150)).perform();
+        tapOn(hb.ilkUrun);
+        WriteToTxt.saveAllData(secilenUrunDosyasi,hb.urunBasligi.getText());
+        scrollUp();
+        List<String> saticiList=new ArrayList<>();
+        saticiList.add(hb.ilkSatici.getText().toLowerCase());
+        scrollUp();
+        scrollUp();
+
+        try {
+            if (hb.ikinciSatici.isDisplayed()){
+                saticiList.add(hb.ikinciSatici.getText().toLowerCase());
+                tapOn(hb.ikinciUrunSepetEkle);
+            }
+        } catch (Exception e) {
+            System.out.println("ikinci ürün yok");
+        }
+
+        WriteToTxt.saveAlldataList(SaticiDosyasi,saticiList);
+
+
+
+        tapOn(hb.ilkUrunSepetEkle);
+        try {
+            if (hb.sepetGit.isDisplayed()){
+                tapOn(hb.sepetGit);
+            }
+        } catch (Exception e) {
+            System.out.println("Sepete git butonu gözükmedi");
+            tapOn(hb.sepetimButonu);
+
+        }
+
+
+        List<String> saticiListesi=ReadTxt.getTextList(SaticiDosyasi);
+        String secilenUrunBasligi=ReadTxt.getText(secilenUrunDosyasi);
+
+        for (int i = 0; i <hb.saticiList.size() ; i++) {
+            Assert.assertEquals(hb.saticiList.get(i).getText().toLowerCase(),saticiListesi.get(i));
+            Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
+
+        }
+       /* for (int i = 0; i <saticiListesi.size() ; i++) {
+            hb.urunKaldirList.click();
+            waitJava(1);
+        }*/
+        Driver.quitAppiumDriver();
+
+
+
+    }
+
+    @Test
+    public void KullaniciOlmadanTest(){
+        Driver.getAppiumDriver();
+
+        try {
+            if (hb.hesabimEmail.isDisplayed()){
+                scrollDown();
+            }
+        } catch (Exception e) {
+            System.out.println("hesabim ssayfasina gidiyor");
+        }
+
+        waitJava(3);
+        tapOn(hb.aramaKutucugu);
+
+
+        enterText(hb.aramaKutucugu,"şemsiye");
+        waitJava(2);
+        touchAction.tap(PointOption.point(940,2150)).perform();
+        tapOn(hb.ilkUrun);
+        WriteToTxt.saveAllData(secilenUrunDosyasi,hb.urunBasligi.getText());
+        scrollUp();
+        List<String> saticiList=new ArrayList<>();
+        saticiList.add(hb.ilkSatici.getText().toLowerCase());
+        scrollUp();
+        scrollUp();
+
+        try {
+            if (hb.ikinciSatici.isDisplayed()){
+                saticiList.add(hb.ikinciSatici.getText().toLowerCase());
+                tapOn(hb.ikinciUrunSepetEkle);
+            }
+        } catch (Exception e) {
+            System.out.println("ikinci ürün yok");
+        }
+
+        WriteToTxt.saveAlldataList(SaticiDosyasi,saticiList);
+
+
+
+        tapOn(hb.ilkUrunSepetEkle);
+        try {
+            if (hb.sepetGit.isDisplayed()){
+                tapOn(hb.sepetGit);
+            }
+        } catch (Exception e) {
+            System.out.println("Sepete git butonu gözükmedi");
+            tapOn(hb.sepetimButonu);
+
+        }
+
+
+
+        List<String> saticiListesi=ReadTxt.getTextList(SaticiDosyasi);
+        String secilenUrunBasligi=ReadTxt.getText(secilenUrunDosyasi);
+
+        for (int i = 0; i <hb.saticiList.size() ; i++) {
+            Assert.assertEquals(hb.saticiList.get(i).getText().toLowerCase(),saticiListesi.get(i));
+            Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
+
+        }
+        for (int i = 0; i <saticiListesi.size() ; i++) {
+            hb.urunKaldirList.click();
+            waitJava(1);
+        }
+
+
+        Driver.quitAppiumDriver();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    @Test
+    public void KullaniciOlarakTest2(){
+        Driver.getAppiumDriver();
+        waitJava(2);
+        try {
+            if (hb.hesabim.isDisplayed()){
+                tapOn(hb.hesabim);
+                tapOn(hb.hesabimGiris);
+            }
+
+        }catch (Exception e){
+            System.out.println("Email sayfası açıldı");
+        }
+
         enterText(hb.hesabimEmail,"java.team.qa.2022@gmail.com");
         tapOn(hb.emailGiris);
         waitJava(3);
@@ -59,7 +253,7 @@ public class HepsiBuradaApp {
         }
 
 
-        WriteToTxt.saveAlldataList(baslikDosyasi,baslikList);
+        WriteToTxt.saveAlldataList(ConfigReader.getProperty("baslikDosyasi"),baslikList);
         waitJava(2);
         scrollDown();
         waitJava(2);
@@ -84,7 +278,7 @@ public class HepsiBuradaApp {
 
         for (int i = 1; i <hb.sepetEkleList.size() ; i++) {
 
-            List<String> urunBaslikList=ReadTxt.getIDList(baslikDosyasi);
+            List<String> urunBaslikList=ReadTxt.getIDList(ConfigReader.getProperty("baslikDosyasi"));
             if (!(ilkKelime(urunBaslikList.get(0)).equals(ilkKelime(urunBaslikList.get(i))))){
                 hb.sepetEkleList.get(i).click();
                 try {
@@ -96,7 +290,7 @@ public class HepsiBuradaApp {
                     System.out.println("urun direk eklendi");
                 }
                 secilenurunList.add(hb.urunBaslikListesi.get(i).getText());
-                secilenurunFiyatList.add(hb.urunFiyatlistesi.get(i).getText());
+                secilenurunFiyatList.add(hb.urunFiyatlistesi.get(i).getText().replaceAll("\\D",""));
                 break;
             }else {
                 scrollUp();
@@ -104,8 +298,8 @@ public class HepsiBuradaApp {
 
         }
 
-        WriteToTxt.saveAlldataList(secilenUrunDosyasi,secilenurunList);
-        WriteToTxt.saveAlldataList(fiyatDosyasi,secilenurunFiyatList);
+        WriteToTxt.saveAlldataList(ConfigReader.getProperty("secilenUrunDosyasi"),secilenurunList);
+        WriteToTxt.saveAlldataList(ConfigReader.getProperty("fiyatDosyasi"),secilenurunFiyatList);
 
         tapOn(hb.sepetimButonu);
 
@@ -114,10 +308,10 @@ public class HepsiBuradaApp {
 
 
 
-        List<String> secilenUrunbaslikListesi=ReadTxt.getIDList(secilenUrunDosyasi);
+        List<String> secilenUrunbaslikListesi=ReadTxt.getIDList(ConfigReader.getProperty("secilenUrunDosyasi"));
         Collections.reverse(secilenUrunbaslikListesi);
         System.out.println(secilenUrunbaslikListesi);
-        List<String> secilenUrunFiyatList=ReadTxt.getIDList(fiyatDosyasi);
+        List<String> secilenUrunFiyatList=ReadTxt.getIDList(ConfigReader.getProperty("fiyatDosyasi"));
         Collections.reverse(secilenUrunFiyatList);
         System.out.println(secilenUrunFiyatList);
 
@@ -127,13 +321,13 @@ public class HepsiBuradaApp {
             Assert.assertEquals(hb.sepetimFiyatList.get(i).getText().replaceAll("\\D",""),secilenUrunFiyatList.get(i));
 
         }
-        for (int i = 0; i <hb.urunKaldirList.size() ; i++) {
-            hb.urunKaldirList.get(i).click();
+        for (int i = 0; i <secilenurunList.size() ; i++) {
+            hb.urunKaldirList.click();
             waitJava(1);
         }
         Driver.quitAppiumDriver();
 
-    }
+    }*/
 
 
 }

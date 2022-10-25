@@ -36,6 +36,39 @@ public class HepsiBuradaAppScreen {
     public MobileElement hesabimEkraniniKapatma;
     @AndroidFindBy(id = "com.pozitron.hepsiburada:id/etSearchBox")
     public MobileElement aramaKutucugu;
+    @AndroidFindBy(xpath = "(//android.view.ViewGroup[@resource-id='com.pozitron.hepsiburada:id/view_product'])[1]")
+    public MobileElement ilkUrun;
+    @AndroidFindBy(xpath="//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.TextView")
+    public MobileElement urunBasligi;
+
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/hb_product_detail_merchant_name")
+    public MobileElement ilkSatici;
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/price")
+    public MobileElement ilkUrunFiyat;
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/product_detail_add_to_cart_text")
+    public MobileElement ilkUrunSepetEkle;
+    @AndroidFindBy(xpath = "(//android.widget.TextView[@resource-id='com.pozitron.hepsiburada:id/merchantName'])[1]")
+    public MobileElement ikinciSatici;
+    @AndroidFindBy(xpath = "(//android.widget.TextView[@resource-id='com.pozitron.hepsiburada:id/lastPrice'])[1]")
+    public MobileElement ikinciUrunFiyati;
+    @AndroidFindBy(xpath = "(//android.widget.TextView[@resource-id='com.pozitron.hepsiburada:id/addToCartText'])[1]")
+    public MobileElement ikinciUrunSepetEkle;
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/toolbarCart")
+    public MobileElement sepetimButonu;
+
+    @AndroidFindBy(id = "com.pozitron.hepsiburada:id/goBasketTxt")
+    public MobileElement sepetGit;
+
+    @AndroidFindBy(xpath = "//android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.widget.TextView")
+    public List<MobileElement> saticiList;
+    @AndroidFindBy(xpath = "//android.widget.ListView/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.widget.TextView[3]")
+    public List<MobileElement> sepetimFiyatList;
+    @AndroidFindBy(xpath = "//android.widget.ListView/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View/android.widget.TextView")
+    public List<MobileElement> sepetimUrunBaslikList;
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Ürünü Kaldır']")
+    public MobileElement urunKaldirList;
+
+    /*
     @AndroidFindBy(id="com.pozitron.hepsiburada:id/tv_product_list_item_name")
     public List<MobileElement> urunBaslikListesi;
 
@@ -52,16 +85,13 @@ public class HepsiBuradaAppScreen {
     public MobileElement sepetimButonu;
 
 
-    @AndroidFindBy(xpath = "//android.widget.ListView/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.widget.TextView[3]")
-    public List<MobileElement> sepetimFiyatList;
-    @AndroidFindBy(xpath = "//android.widget.ListView/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View/android.widget.TextView")
-    public List<MobileElement> sepetimUrunBaslikList;
+
 
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Ürünü Kaldır']")
-    public List<MobileElement> urunKaldirList;
+    public MobileElement urunKaldirList;
 
-
+*/
 
 
 

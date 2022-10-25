@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ReadTxt {
 
-    public static String getIDs(String dataFile) {
+    public static String getText(String dataFile) {
         String id ="";
         try {
             FileReader fileReader = new FileReader(dataFile);
@@ -33,7 +33,7 @@ public class ReadTxt {
         }
         return id;
     }
-    public static List<String> getIDList(String dataFile) {
+    public static List<String> getTextList(String dataFile) {
         List<String> idList =new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(dataFile);

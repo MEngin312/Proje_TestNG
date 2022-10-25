@@ -82,7 +82,7 @@ public class ReusableMethods {
     }
 
     public static void tapOn(MobileElement element) {
-        waitToBeClickable(element, 15);
+       // waitToBeClickable(element, 15);
         element.click();
     }
     public static void tapOnText(String text) {
@@ -93,13 +93,13 @@ public class ReusableMethods {
 
 
     public static void enterText(MobileElement element, String text) {
-        waitToBeClickable(element, 15);
+        //waitToBeClickable(element, 15);
         element.sendKeys(text);
     }
 
 
     public static void enterText(MobileElement element, String text, boolean needClear) {
-        waitToBeClickable(element, 15);
+       // waitToBeClickable(element, 15);
         if (needClear) {
             element.clear();
         }
@@ -144,10 +144,10 @@ public class ReusableMethods {
         Dimension dimension= Driver.getAppiumDriver().manage().window().getSize();
 
         int start_x= (int) (dimension.width*0.5);
-        int start_y= (int) (dimension.height*0.8);
+        int start_y= (int) (dimension.height*0.75);
 
         int end_x= (int) (dimension.width*0.5);
-        int end_y= (int) (dimension.height*0.2);
+        int end_y= (int) (dimension.height*0.25);
         TouchAction touchAction=new TouchAction<>(Driver.getAppiumDriver());
         touchAction.press(PointOption.point(start_x,start_y))
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
@@ -194,9 +194,4 @@ public class ReusableMethods {
          return ilkKelime;
     }
 
-    public static void ikinciUrunSec(){
-
-
-
-    }
 }

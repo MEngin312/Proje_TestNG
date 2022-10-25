@@ -89,23 +89,14 @@ public class ReusableMethods {
         waitToBeClickable((MobileElement) Driver.getAppiumDriver().findElementByXPath("//android.widget.TextView[@text='" + text + "']"), 10);
         Driver.getAppiumDriver().findElementByXPath("//android.widget.TextView[@text='" + text + "']").click();
     }
-    public static void tapOnBrowser(MobileElement element) {
-        waitToBeClickableBrowser(element, 15);
-        element.click();
-    }
-    public static void tapOnChrome(MobileElement element) {
-        waitToBeClickableChrome(element, 20);
-        element.click();
-    }
+
+
 
     public static void enterText(MobileElement element, String text) {
         waitToBeClickable(element, 15);
         element.sendKeys(text);
     }
-    public static void enterTextBrowser(MobileElement element, String text) {
-        waitToBeClickableBrowser(element, 15);
-        element.sendKeys(text);
-    }
+
 
     public static void enterText(MobileElement element, String text, boolean needClear) {
         waitToBeClickable(element, 15);
@@ -133,29 +124,17 @@ public class ReusableMethods {
         WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(),timeout);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
-    public static void waitToBeClickableBrowser(MobileElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(Driver.getBrowserDriver(),timeout);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
-    public static void waitToBeClickableChrome(MobileElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(DriverChrome.getChromeDriver(),timeout);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
 
-    public static void waitToBeClickableSendKeysBrowser(MobileElement element, int timeout, String text) {
-        WebDriverWait wait = new WebDriverWait(Driver.getBrowserDriver(),timeout);
-        wait.until(ExpectedConditions.elementToBeClickable(element)).sendKeys(text);
-    }
+
+
+
 
     public static void scrollWithUiScrollableClick(String elementText) {
         AndroidDriver<MobileElement> driver = (AndroidDriver) Driver.getAppiumDriver();
         driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+elementText+"\"))");
         tapOn(driver.findElementByXPath("//android.widget.TextView[@text='" + elementText + "']"));
     }
-    public static void scrollWithUiScrollableChrome(String elementText) {
-        AndroidDriver<MobileElement> driver = (AndroidDriver) DriverChrome.getChromeDriver();
-        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+elementText+"\"))");
-    }
+
     public static void scrollWithUiScrollable(String elementText) {
         AndroidDriver<MobileElement> driver = (AndroidDriver) Driver.getAppiumDriver();
         driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+elementText+"\"))");
@@ -172,49 +151,25 @@ public class ReusableMethods {
         TouchAction touchAction=new TouchAction<>(Driver.getAppiumDriver());
         touchAction.press(PointOption.point(start_x,start_y))
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                .moveTo(PointOption.point(end_x,end_y)).perform();
+                .moveTo(PointOption.point(end_x,end_y)).release().perform();
 
     }
 
-    public static void scrollUpChrome() {
-        Dimension dimension= DriverChrome.getChromeDriver().manage().window().getSize();
-
-        int start_x= (int) (dimension.width*0.5);
-        int start_y= (int) (dimension.height*0.7);
-
-        int end_x= (int) (dimension.width*0.5);
-        int end_y= (int) (dimension.height*0.3);
-        TouchAction touchAction=new TouchAction<>(DriverChrome.getChromeDriver());
-        touchAction.press(PointOption.point(start_x,start_y))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                .moveTo(PointOption.point(end_x,end_y)).perform();
-
-    }
-    public static void scrollDownChrome() {
-        Dimension dimension= DriverChrome.getChromeDriver().manage().window().getSize();
+    public static void scrollDown() {
+        Dimension dimension= Driver.getAppiumDriver().manage().window().getSize();
 
         int start_x= (int) (dimension.width*0.5);
         int start_y= (int) (dimension.height*0.2);
 
         int end_x= (int) (dimension.width*0.5);
         int end_y= (int) (dimension.height*0.8);
-        TouchAction touchAction=new TouchAction<>(DriverChrome.getChromeDriver());
+        TouchAction touchAction=new TouchAction<>(Driver.getAppiumDriver());
         touchAction.press(PointOption.point(start_x,start_y))
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                .moveTo(PointOption.point(end_x,end_y)).perform();
+                .moveTo(PointOption.point(end_x,end_y)).release().perform();
 
     }
 
-
-    public static void clickOfTheDate(String tarih) {
-             scrollWithUiScrollable(tarih);
-        Driver.getAppiumDriver().findElementByXPath("//android.widget.CheckedTextView[@text='"+tarih+"']").click();
-
-    }
-    public static void clickOfTheDateChrome(String tarih) {
-        DriverChrome.getChromeDriver().findElementByXPath("//android.widget.CheckedTextView[@text='"+tarih+"']").click();
-
-    }
     public static void pageAfter(){
 
         try {
@@ -224,156 +179,24 @@ public class ReusableMethods {
         }
 
     }
-    public static void pageAfterChrome(){
-
-        try {
-            DriverChrome.getChromeDriver().findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(15)"));
-        } catch (InvalidSelectorException e) {
-            // ignore
-        }
-
-    }
-
-public static void pageAfterBrowser(){
-
-    try {
-        Driver.getBrowserDriver().findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"));
-    } catch (InvalidSelectorException e) {
-        // ignore
-    }
-
-}
-    public static void pageAfter(AppiumDriver driver){
-        if (driver==DriverChrome.getChromeDriver()) {
-            try {
-                DriverChrome.getChromeDriver().findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(25)"));
-            } catch (InvalidSelectorException e) {
-                // ignore
-            }
-        }else  if (driver==Driver.getAppiumDriver()) {
-            try {
-                Driver.getAppiumDriver().findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"));
-            } catch (InvalidSelectorException e) {
-                // ignore
-            }
-        }else  if (driver==Driver.getBrowserDriver()) {
-            try {
-                Driver.getBrowserDriver().findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"));
-            } catch (InvalidSelectorException e) {
-                // ignore
-            }
-        }
-
-    }
 
 
-//attribute check
-
-    public static void setCardNumber(String cardNo){
-             TouchAction touchAction=new TouchAction(Driver.getAppiumDriver());
-        for (int i = 0; i <cardNo.length() ; i++) {
-            ReusableMethods.waitJava(2);
-            switch (cardNo.charAt(i)){
-                case '0':
-                    touchAction.tap(PointOption.point(570,2750)).perform();
-                    break;
-                case '1':
-                    touchAction.tap(PointOption.point(220,2075)).perform();
-                    break;
-                case '2':
-                    touchAction.tap(PointOption.point(580,2075)).perform();
-                    break;
-                case '3':
-                    touchAction.tap(PointOption.point(975,2075)).perform();
-                    break;
-                case '4':
-                    touchAction.tap(PointOption.point(220,2300)).perform();
-                    break;
-                case '5':
-                    touchAction.tap(PointOption.point(580,2300)).perform();
-                    break;
-                case '6':
-                    touchAction.tap(PointOption.point(975,2300)).perform();
-                    break;
-                case '7':
-                    touchAction.tap(PointOption.point(220,2530)).perform();
-                    break;
-                case '8':
-                    touchAction.tap(PointOption.point(580,2530)).perform();
-                    break;
-                case '9':
-                    touchAction.tap(PointOption.point(975,2530)).perform();
-                    break;
-            }
-
-        }
-    }
-
-    public static void setCardNumberChrome(String cardNo){
-        TouchAction touchAction=new TouchAction(DriverChrome.getChromeDriver());
-        for (int i = 0; i <cardNo.length() ; i++) {
-            ReusableMethods.waitJava(2);
-            switch (cardNo.charAt(i)){
-                case '0':
-                    touchAction.tap(PointOption.point(400,1715)).perform();
-                    break;
-                case '1':
-                    touchAction.tap(PointOption.point(140,1265)).perform();
-                    break;
-                case '2':
-                    touchAction.tap(PointOption.point(400,1265)).perform();
-                    break;
-                case '3':
-                    touchAction.tap(PointOption.point(655,1265)).perform();
-                    break;
-                case '4':
-                    touchAction.tap(PointOption.point(140,1400)).perform();
-                    break;
-                case '5':
-                    touchAction.tap(PointOption.point(400,1400)).perform();
-                    break;
-                case '6':
-                    touchAction.tap(PointOption.point(655,1400)).perform();
-                    break;
-                case '7':
-                    touchAction.tap(PointOption.point(140,1570)).perform();
-                    break;
-                case '8':
-                    touchAction.tap(PointOption.point(400,1570)).perform();
-                    break;
-                case '9':
-                    touchAction.tap(PointOption.point(655,1570)).perform();
-                    break;
-            }
-
-        }
-    }
-
-    public static void adressClick(String text){
-             Driver.getBrowserDriver().findElementByXPath("//*[text()='"+text+"']").click();
-
-    }
-
-   public static void chromePartialTextTitleClick(String title){
-            tapOnChrome((MobileElement) DriverChrome.getChromeDriver().findElement(By.xpath("//android.view.View[@content-desc='"+title+"']")));
-
-   }
-
-
-    public static void tapSepet() {
-        Dimension dimension= DriverChrome.getChromeDriver().manage().window().getSize();
-
-        int start_x= (int) (dimension.width*0.5);
-        int start_y= (int) (dimension.height*0.95);
-
-        TouchAction touchAction=new TouchAction(DriverChrome.getChromeDriver());
-
-
-        touchAction.tap(PointOption.point(550,1730)).perform();
-    }
 
 
     public static void assertAll(MobileElement element,String text){
         Assert.assertTrue(element.getText().contains(text));
+    }
+
+    public static String ilkKelime(String text){
+        String ilkKelime="";
+        int ilkbosluk=text.indexOf(" ");
+        ilkKelime=text.substring(0,ilkbosluk);
+         return ilkKelime;
+    }
+
+    public static void ikinciUrunSec(){
+
+
+
     }
 }

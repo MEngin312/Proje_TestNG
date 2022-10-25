@@ -43,6 +43,24 @@ public class HepsiBuradaAppScreen {
     public List<MobileElement> sepetEkleList;
     @AndroidFindBy(id="com.pozitron.hepsiburada:id/atcb_product_variant")
     public MobileElement ikinciSepetEklemeAcilanPencere;
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/tvPrice")
+    public List<MobileElement> urunFiyatlistesi;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='Başa dön']")
+    public MobileElement basadon;
+    @AndroidFindBy(id="com.pozitron.hepsiburada:id/nav_graph_cart")
+    public MobileElement sepetimButonu;
+
+
+    @AndroidFindBy(xpath = "//android.widget.ListView/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.widget.TextView[3]")
+    public List<MobileElement> sepetimFiyatList;
+    @AndroidFindBy(xpath = "//android.widget.ListView/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View/android.widget.TextView")
+    public List<MobileElement> sepetimUrunBaslikList;
+
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Ürünü Kaldır']")
+    public List<MobileElement> urunKaldirList;
+
 
 
 

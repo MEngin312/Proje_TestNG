@@ -12,8 +12,7 @@ import java.util.List;
 public class WriteToTxt {
 
 
-    public static void saveAllData
-            (String filename,String text){
+    public static void saveAllData(String filename,String text){
 
         try {
             FileWriter fileWriter = new FileWriter(filename, false);

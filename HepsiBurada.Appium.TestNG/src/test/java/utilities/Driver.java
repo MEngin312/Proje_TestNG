@@ -4,14 +4,18 @@ package utilities;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidStartScreenRecordingOptions;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.HttpCommandExecutor;
+import org.openqa.selenium.remote.http.HttpClient;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 
@@ -45,6 +49,8 @@ public class Driver {
             desiredCapabilities.setCapability("appPackage","com.pozitron.hepsiburada");
             desiredCapabilities.setCapability("appActivity","com.hepsiburada.ui.home.BottomNavigationActivity");
                 assert appiumServerURL != null;
+
+
                 appiumDriver = new AndroidDriver(appiumServerURL,desiredCapabilities);
             } else if (ConfigReader.getProperty("platformName").equals("iOS")) {
                 //if you do not provide app path so you should use "bundleId"

@@ -15,16 +15,15 @@ import utilities.WriteToTxt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static utilities.ReusableMethods.*;
 
 public class HepsiBuradaApp {
-
     HepsiBuradaAppScreen hb=new HepsiBuradaAppScreen();
-   TouchAction touchAction = new TouchAction(Driver.getAppiumDriver());
-  String  SaticiDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("SaticiDosyasi");
- String   secilenUrunDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("secilenUrunDosyasi");
-  String  fiyatDosyasi=System.getProperty("user.dir")+ConfigReader.getProperty("fiyatDosyasi");
+    TouchAction touchAction = new TouchAction(Driver.getAppiumDriver());
+    String  SaticiDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("SaticiDosyasi");
+    String   secilenUrunDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("secilenUrunDosyasi");
     @Test
     public void KullaniciOlarakTest(){
     Driver.getAppiumDriver();
@@ -38,33 +37,34 @@ public class HepsiBuradaApp {
 
         tapOn(hb.hesabim);
        tapOn(hb.hesabimGiris);
-        enterText(hb.hesabimEmail,"java.team.qa.2022@gmail.com");
+        enterText(hb.hesabimEmail,ConfigReader.getProperty("email"));
         tapOn(hb.emailGiris);
         waitJava(3);
-        enterText(hb.hesabimSifre,"123456a.A");
+        enterText(hb.hesabimSifre,ConfigReader.getProperty("sifre"));
         tapOn(hb.sifreGiris);
         waitJava(3);
         tapOn(hb.tamamButonu);
 
-        assertAll(hb.fullName,"Ayüzbir Harcabitmez");
+        assertAll(hb.fullName,ConfigReader.getProperty("isim"));
         tapOn(hb.hesabimEkraniniKapatma);
         tapOn(hb.aramaKutucugu);
 
 
-        enterText(hb.aramaKutucugu,"şemsiye");
+        enterText(hb.aramaKutucugu,ConfigReader.getProperty("arananKelime"));
         waitJava(2);
         touchAction.tap(PointOption.point(940,2150)).perform();
         tapOn(hb.ilkUrun);
         WriteToTxt.saveAllData(secilenUrunDosyasi,hb.urunBasligi.getText());
         scrollUp();
         List<String> saticiList=new ArrayList<>();
-        saticiList.add(hb.ilkSatici.getText().toLowerCase());
+        saticiList.add(hb.ilkSatici.getText().toLowerCase(Locale.ENGLISH));
         scrollUp();
         scrollUp();
 
         try {
             if (hb.ikinciSatici.isDisplayed()){
-                saticiList.add(hb.ikinciSatici.getText().toLowerCase());
+                String ikincisatici=hb.ikinciSatici.getText().toLowerCase(Locale.ENGLISH);
+                saticiList.add(ikincisatici);
                 tapOn(hb.ikinciUrunSepetEkle);
             }
         } catch (Exception e) {
@@ -91,14 +91,14 @@ public class HepsiBuradaApp {
         String secilenUrunBasligi=ReadTxt.getText(secilenUrunDosyasi);
 
         for (int i = 0; i <hb.saticiList.size() ; i++) {
-            Assert.assertEquals(hb.saticiList.get(i).getText().toLowerCase(),saticiListesi.get(i));
-            Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
+            Assert.assertEquals(hb.saticiList.get(i).getText().toLowerCase(Locale.ENGLISH),saticiListesi.get(i));
+            Assert.assertEquals(baslikList(secilenUrunBasligi).get(i).getText(),secilenUrunBasligi);
 
         }
-       /* for (int i = 0; i <saticiListesi.size() ; i++) {
+        for (int i = 0; i <saticiListesi.size() ; i++) {
             hb.urunKaldirList.click();
             waitJava(1);
-        }*/
+        }
         Driver.quitAppiumDriver();
 
 
@@ -121,20 +121,20 @@ public class HepsiBuradaApp {
         tapOn(hb.aramaKutucugu);
 
 
-        enterText(hb.aramaKutucugu,"şemsiye");
+        enterText(hb.aramaKutucugu,ConfigReader.getProperty("arananKelime"));
         waitJava(2);
         touchAction.tap(PointOption.point(940,2150)).perform();
         tapOn(hb.ilkUrun);
         WriteToTxt.saveAllData(secilenUrunDosyasi,hb.urunBasligi.getText());
         scrollUp();
         List<String> saticiList=new ArrayList<>();
-        saticiList.add(hb.ilkSatici.getText().toLowerCase());
+        saticiList.add(hb.ilkSatici.getText().toLowerCase(Locale.ENGLISH));
         scrollUp();
         scrollUp();
 
         try {
             if (hb.ikinciSatici.isDisplayed()){
-                saticiList.add(hb.ikinciSatici.getText().toLowerCase());
+                saticiList.add(hb.ikinciSatici.getText().toLowerCase(Locale.ENGLISH));
                 tapOn(hb.ikinciUrunSepetEkle);
             }
         } catch (Exception e) {
@@ -162,7 +162,7 @@ public class HepsiBuradaApp {
         String secilenUrunBasligi=ReadTxt.getText(secilenUrunDosyasi);
 
         for (int i = 0; i <hb.saticiList.size() ; i++) {
-            Assert.assertEquals(hb.saticiList.get(i).getText().toLowerCase(),saticiListesi.get(i));
+            Assert.assertEquals(hb.saticiList.get(i).getText().toLowerCase(Locale.ENGLISH),saticiListesi.get(i));
             Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
 
         }

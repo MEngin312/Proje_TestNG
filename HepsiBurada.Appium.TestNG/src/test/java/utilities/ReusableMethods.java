@@ -194,4 +194,9 @@ public class ReusableMethods {
          return ilkKelime;
     }
 
+    public static List<MobileElement> baslikList(String text){
+
+        List<MobileElement> sepetimBaslik=Driver.getAppiumDriver().findElementsByXPath("//android.widget.TextView[@text='"+text+"']");
+   return sepetimBaslik;
+    }
 }

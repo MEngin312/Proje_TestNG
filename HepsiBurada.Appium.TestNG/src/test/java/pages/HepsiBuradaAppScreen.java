@@ -65,7 +65,7 @@ public class HepsiBuradaAppScreen {
     public List<MobileElement> sepetimFiyatList;
     @AndroidFindBy(xpath = "//android.widget.ListView/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View/android.widget.TextView")
     public List<MobileElement> sepetimUrunBaslikList;
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Ürünü Kaldır']")
+    @AndroidFindBy(xpath = "(//android.view.View[@content-desc='Ürünü Kaldır'])[1]")
     public MobileElement urunKaldirList;
 
     /*

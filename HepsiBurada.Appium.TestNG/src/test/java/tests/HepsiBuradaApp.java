@@ -2,16 +2,15 @@ package tests;
 
 
 
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.Markup;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HepsiBuradaAppScreen;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReadTxt;
-import utilities.WriteToTxt;
+import utilities.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,24 +18,29 @@ import java.util.Locale;
 
 import static utilities.ReusableMethods.*;
 
-public class HepsiBuradaApp {
-    HepsiBuradaAppScreen hb=new HepsiBuradaAppScreen();
-    TouchAction touchAction = new TouchAction(Driver.getAppiumDriver());
+public class HepsiBuradaApp extends TestBaseRapor {
+    HepsiBuradaAppScreen hb;
+    TouchAction touchAction;
     String  SaticiDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("SaticiDosyasi");
     String   secilenUrunDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("secilenUrunDosyasi");
     @Test
-    public void KullaniciOlarakTest(){
-    Driver.getAppiumDriver();
+    public void kullaniciOlarakTest(){
+        extentTest=extentReports.createTest("TESTCASE01","Kullanici Olarak Giris Yapıp Sepeti Dogrulama");
+        hb=new HepsiBuradaAppScreen();
+        touchAction = new TouchAction(Driver.getAppiumDriver());
+        Driver.getAppiumDriver();
+        extentTest.info("Kullanici HepsiBurada Uygulamasini acar.");
         try {
             if (hb.hesabimEmail.isDisplayed()){
                 scrollDown();
             }
         } catch (Exception e) {
-            System.out.println("hesabim ssayfasina gidiyor");
+            System.out.println("hesabim ssayfasina gidiyor.");
         }
 
         tapOn(hb.hesabim);
-       tapOn(hb.hesabimGiris);
+        extentTest.info("Kullanici Hesabim sayfasina Gider.");
+        tapOn(hb.hesabimGiris);
         enterText(hb.hesabimEmail,ConfigReader.getProperty("email"));
         tapOn(hb.emailGiris);
         waitJava(3);
@@ -44,8 +48,9 @@ public class HepsiBuradaApp {
         tapOn(hb.sifreGiris);
         waitJava(3);
         tapOn(hb.tamamButonu);
-
+        extentTest.info("Kullanici Yonlendirmeler ile Gecerli bilgileri girer.");
         assertAll(hb.fullName,ConfigReader.getProperty("isim"));
+        extentTest.pass("Kullanici Giris Isleminin yapildigini Test Eder.");
         tapOn(hb.hesabimEkraniniKapatma);
         tapOn(hb.aramaKutucugu);
 
@@ -53,7 +58,9 @@ public class HepsiBuradaApp {
         enterText(hb.aramaKutucugu,ConfigReader.getProperty("arananKelime"));
         waitJava(2);
         touchAction.tap(PointOption.point(940,2150)).perform();
+        extentTest.info("Kullanici "+ConfigReader.getProperty("arananKelime")+" Kelimesini aratir.");
         tapOn(hb.ilkUrun);
+        extentTest.info("Kullanici ilk  Urunu secer.");
         WriteToTxt.saveAllData(secilenUrunDosyasi,hb.urunBasligi.getText());
         scrollUp();
         List<String> saticiList=new ArrayList<>();
@@ -76,6 +83,8 @@ public class HepsiBuradaApp {
 
 
         tapOn(hb.ilkUrunSepetEkle);
+        extentTest.info("Kullanici Ilk Urunu Sepete Ekler, varsa Farkli Saticidan Ayni Urunu Ekler.");
+        extentTest.log(Status.INFO,"Kullanici Ilk Urunu Sepete Ekler, varsa Farkli Saticidan Ayni Urunu Ekler.");
         try {
             if (hb.sepetGit.isDisplayed()){
                 tapOn(hb.sepetGit);
@@ -86,6 +95,7 @@ public class HepsiBuradaApp {
 
         }
 
+        extentTest.info("Kullanici Sepetim Sayfasina Gider.");
 
         List<String> saticiListesi=ReadTxt.getTextList(SaticiDosyasi);
         String secilenUrunBasligi=ReadTxt.getText(secilenUrunDosyasi);
@@ -95,19 +105,25 @@ public class HepsiBuradaApp {
             Assert.assertEquals(baslikList(secilenUrunBasligi).get(i).getText(),secilenUrunBasligi);
 
         }
+        extentTest.pass("Kullanici Secilen Urunleri Sepetim sayfasinda Dogrular.");
         for (int i = 0; i <saticiListesi.size() ; i++) {
             hb.urunKaldirList.click();
             waitJava(1);
         }
+        extentTest.info("Kullanici Ekledigi Urunleri Siler");
         Driver.quitAppiumDriver();
-
+        extentTest.info("Kullanici Uygulamayi Kapatir.");
 
 
     }
 
     @Test
-    public void KullaniciOlmadanTest(){
+    public void kullaniciOlmadanTest(){
+        extentTest=extentReports.createTest("TESTCASE02","Kullanici Olmadan Giris Yapıp Sepeti Dogrulama");
+        hb=new HepsiBuradaAppScreen();
+        touchAction = new TouchAction(Driver.getAppiumDriver());
         Driver.getAppiumDriver();
+        extentTest.info("Kullanici HepsiBurada Uygulamasini acar.");
 
         try {
             if (hb.hesabimEmail.isDisplayed()){
@@ -122,9 +138,11 @@ public class HepsiBuradaApp {
 
 
         enterText(hb.aramaKutucugu,ConfigReader.getProperty("arananKelime"));
-        waitJava(2);
-        touchAction.tap(PointOption.point(940,2150)).perform();
+        waitJava(4);
+        touchAction.tap(PointOption.point(940,2150)).release().perform();
+        extentTest.info("Kullanici "+ConfigReader.getProperty("arananKelime")+" Kelimesini aratir.");
         tapOn(hb.ilkUrun);
+        extentTest.info("Kullanici ilk  Urunu secer.");
         WriteToTxt.saveAllData(secilenUrunDosyasi,hb.urunBasligi.getText());
         scrollUp();
         List<String> saticiList=new ArrayList<>();
@@ -142,10 +160,8 @@ public class HepsiBuradaApp {
         }
 
         WriteToTxt.saveAlldataList(SaticiDosyasi,saticiList);
-
-
-
         tapOn(hb.ilkUrunSepetEkle);
+        extentTest.info("Kullanici Ilk Urunu Sepete Ekler, varsa Farkli Saticidan Ayni Urunu Ekler.");
         try {
             if (hb.sepetGit.isDisplayed()){
                 tapOn(hb.sepetGit);
@@ -155,9 +171,7 @@ public class HepsiBuradaApp {
             tapOn(hb.sepetimButonu);
 
         }
-
-
-
+        extentTest.info("Kullanici Sepetim Sayfasina Gider.");
         List<String> saticiListesi=ReadTxt.getTextList(SaticiDosyasi);
         String secilenUrunBasligi=ReadTxt.getText(secilenUrunDosyasi);
 
@@ -166,13 +180,14 @@ public class HepsiBuradaApp {
             Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
 
         }
+        extentTest.pass("Kullanici Secilen Urunleri Sepetim sayfasinda Dogrular.");
         for (int i = 0; i <saticiListesi.size() ; i++) {
             hb.urunKaldirList.click();
             waitJava(1);
         }
-
-
+        extentTest.info("Kullanici Ekledigi Urunleri Siler");
         Driver.quitAppiumDriver();
+        extentTest.info("Kullanici Uygulamayi Kapatir.");
 
     }
 

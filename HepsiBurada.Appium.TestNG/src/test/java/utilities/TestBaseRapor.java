@@ -22,14 +22,14 @@ public abstract class TestBaseRapor {
     public void setUpTest() {
         extentReports = new ExtentReports(); // Raporlamayi baslatir
         //rapor oluştuktan sonra raporunuz nereye eklensin istiyorsanız buraya yazıyorsunuz.
-        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-        String filePath = System.getProperty("user.dir") + "/target/Rapor/rapor"+date+".html";
+        String date = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss").format(new Date());
+        String filePath = System.getProperty("user.dir") + "/src/rapor/rapor/ "+date+".html";
         //oluşturmak istediğimiz raporu (html formatında) başlatıyoruz, filePath ile dosya yolunu belirliyoruz.
         extentHtmlReporter = new ExtentHtmlReporter(filePath);
         extentReports.attachReporter(extentHtmlReporter);
         // İstediğiniz bilgileri buraya ekeyebiliyorsunuz.
         extentReports.setSystemInfo("Enviroment","QA");
-        extentReports.setSystemInfo("Browser", ConfigReader.getProperty("browser")); // chrome, firefox
+        extentReports.setSystemInfo("App", "HepsiBurada Uygulamasi"); // chrome, firefox
         extentReports.setSystemInfo("Automation Engineer", "Kadir");
         extentHtmlReporter.config().setDocumentTitle("Rapor");
         extentHtmlReporter.config().setReportName("TestNG Reports");

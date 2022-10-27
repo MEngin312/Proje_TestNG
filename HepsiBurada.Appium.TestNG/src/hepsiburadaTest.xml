@@ -4,8 +4,8 @@
         <classes>
             <class name="tests.HepsiBuradaApp">
                 <methods>
+                    <include name="kullaniciOlmadanTest"></include>
                     <include name="kullaniciOlarakTest"></include>
-
                 </methods>
             </class>
 

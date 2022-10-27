@@ -12,7 +12,8 @@ import java.util.Locale;
 
 import static utilities.ReusableMethods.*;
 
-public class HepsiBuradaApp   {
+public class HepsiBuradaApp extends TestBaseRapor  {
+
 
     HepsiBuradaAppScreen hb;
     TouchAction touchAction;
@@ -22,8 +23,6 @@ public class HepsiBuradaApp   {
     public void kullaniciOlarakTest(){
         hb=new HepsiBuradaAppScreen();
         touchAction = new TouchAction(Driver.getAppiumDriver());
-
-
         Log.startTestCase("Kullanici Olarak Giris Yapıp Sepeti Dogrulama");
 
         Driver.getAppiumDriver();
@@ -35,7 +34,6 @@ public class HepsiBuradaApp   {
                 scrollDown();
             }
         } catch (Exception e) {
-            System.out.println("hesabim ssayfasina gidiyor.");
         }
 
         tapOn(hb.hesabim);
@@ -54,7 +52,7 @@ public class HepsiBuradaApp   {
         Log.info("Kullanici Yonlendirmeler ile Gecerli bilgileri girer.");
 
 
-        Assert.assertEquals(hb.fullName,ConfigReader.getProperty("isim"));
+        Assert.assertEquals(hb.fullName.getText(),ConfigReader.getProperty("isim"));
         Log.info("Kullanici Giris Isleminin yapildigini Test Eder.");
 
 
@@ -98,7 +96,7 @@ public class HepsiBuradaApp   {
                 tapOn(hb.sepetGit);
             }
         } catch (Exception e) {
-            System.out.println("Sepete git butonu gözükmedi");
+
             tapOn(hb.sepetimButonu);
 
         }
@@ -110,6 +108,7 @@ public class HepsiBuradaApp   {
 
         for (int i = 0; i <hb.saticiList.size() ; i++) {
             Assert.assertEquals(hb.saticiList.get(i).getText().toLowerCase(Locale.ENGLISH),saticiListesi.get(i));
+            waitJava(2);
             Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
 
         }
@@ -143,10 +142,10 @@ public class HepsiBuradaApp   {
                 scrollDown();
             }
         } catch (Exception e) {
-            System.out.println("hesabim ssayfasina gidiyor");
+
         }
 
-        waitJava(3);
+
         tapOn(hb.aramaKutucugu);
 
 
@@ -186,7 +185,6 @@ public class HepsiBuradaApp   {
                 tapOn(hb.sepetGit);
             }
         } catch (Exception e) {
-            System.out.println("Sepete git butonu gözükmedi");
             tapOn(hb.sepetimButonu);
 
         }

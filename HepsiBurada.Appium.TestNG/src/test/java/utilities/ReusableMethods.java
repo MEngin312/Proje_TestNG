@@ -30,7 +30,7 @@ public class ReusableMethods {
         TakesScreenshot ts = (TakesScreenshot) Driver.getAppiumDriver();
         File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location
-        String target = System.getProperty("user.dir") + "/src/test/resources/screenshots/ " + name + date + ".png";
+        String target = System.getProperty("user.dir") + "/src/test/resources/screenShots/ " + name + date + ".png";
         File finalDestination = new File(target);
         // save the screenshot to the path given
         FileUtils.copyFile(source, finalDestination);

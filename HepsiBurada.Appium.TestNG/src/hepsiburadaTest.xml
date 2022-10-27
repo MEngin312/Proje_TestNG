@@ -5,7 +5,7 @@
             <class name="tests.HepsiBuradaApp">
                 <methods>
                     <include name="kullaniciOlarakTest"></include>
-                    <include name="kullaniciOlmadanTest"></include>
+
                 </methods>
             </class>
 

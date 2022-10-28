@@ -39,8 +39,12 @@ public class Driver {
 
             switch (ConfigReader.getProperty("browser")){
                 case "chrome":
+                    ChromeOptions options=new ChromeOptions();
+                    options.addArguments("--disable-blink-features");
+                    options.addArguments("--disable-blink-features=AutomationControlled");
+                    options.addArguments("--disable-extensions");
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driver = new ChromeDriver(options);
                     break;
                 case "safari":
                     WebDriverManager.safaridriver().setup();
@@ -79,11 +83,17 @@ public class Driver {
      return driver;
     }
 
-    public static void closeDriver(){
+    public static void quitDriver(){
 
         if (driver!=null){
-      driver.close();
-      driver=null;
+            if(driver.getWindowHandles().size()==2){
+                driver.quit();
+                driver=null;
+            }else {
+                driver.close();
+                driver=null;
+            }
+
     }
 
     }

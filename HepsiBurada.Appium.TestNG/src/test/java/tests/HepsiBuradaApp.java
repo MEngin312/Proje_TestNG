@@ -3,6 +3,7 @@ import com.aventstack.extentreports.Status;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import org.testng.Assert;
+import org.testng.annotations.ITestAnnotation;
 import org.testng.annotations.Test;
 import pages.HepsiBuradaAppScreen;
 import utilities.*;
@@ -53,7 +54,9 @@ public class HepsiBuradaApp extends TestBaseRapor  {
 
 
         Assert.assertEquals(hb.fullName.getText(),ConfigReader.getProperty("isim"));
-        Log.info("Kullanici Giris Isleminin yapildigini Test Eder.");
+        Log.assertLog(true,"Kullanici Giris Isleminin yapildigini Test Eder.");
+
+
 
 
         tapOn(hb.hesabimEkraniniKapatma);
@@ -112,7 +115,7 @@ public class HepsiBuradaApp extends TestBaseRapor  {
             Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
 
         }
-        Log.info("Kullanici Secilen Urunleri Sepetim sayfasinda Dogrular.");
+        Log.assertLog(true,"Kullanici Secilen Urunleri Sepetim sayfasinda Dogrular.");
         for (int i = 0; i <saticiListesi.size() ; i++) {
             hb.urunKaldirList.click();
             waitJava(1);

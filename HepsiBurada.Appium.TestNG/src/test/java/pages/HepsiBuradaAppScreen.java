@@ -17,7 +17,6 @@ public class HepsiBuradaAppScreen {
 
     @AndroidFindBy(accessibility = "Hesabım")
     public MobileElement hesabim;
-
     @AndroidFindBy(xpath = "(//android.widget.Button)[2]")
     public MobileElement hesabimGiris;
     @AndroidFindBy(className = "android.widget.EditText")

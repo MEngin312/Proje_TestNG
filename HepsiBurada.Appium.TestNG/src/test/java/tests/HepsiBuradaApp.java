@@ -54,7 +54,7 @@ public class HepsiBuradaApp extends TestBaseRapor  {
 
 
         Assert.assertEquals(hb.fullName.getText(),ConfigReader.getProperty("isim"));
-        Log.assertLog(true,"Kullanici Giris Isleminin yapildigini Test Eder.");
+        Log.assertLog("Kullanici Giris Isleminin yapildigini Test Eder.");
 
 
 
@@ -115,13 +115,13 @@ public class HepsiBuradaApp extends TestBaseRapor  {
             Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
 
         }
-        Log.assertLog(true,"Kullanici Secilen Urunleri Sepetim sayfasinda Dogrular.");
+        Log.assertLog("Kullanici Secilen Urunleri Sepetim sayfasinda Dogrular.");
         for (int i = 0; i <saticiListesi.size() ; i++) {
             hb.urunKaldirList.click();
             waitJava(1);
         }
         Log.info("Kullanici Ekledigi Urunleri Siler");
-        Driver.quitAppiumDriver();
+
         Log.endTestCase("Kullanici Olarak Giris Yapıp Sepeti Dogrulama");
 
     }
@@ -199,10 +199,11 @@ public class HepsiBuradaApp extends TestBaseRapor  {
 
         for (int i = 0; i <hb.saticiList.size() ; i++) {
             Assert.assertEquals(hb.saticiList.get(i).getText().toLowerCase(Locale.ENGLISH),saticiListesi.get(i));
+            waitJava(2);
             Assert.assertEquals(hb.sepetimUrunBaslikList.get(i).getText(),secilenUrunBasligi);
 
         }
-        Log.info("Kullanici Secilen Urunleri Sepetim sayfasinda Dogrular.");
+        Log.assertLog("Kullanici Secilen Urunleri Sepetim sayfasinda Dogrular.");
 
 
         for (int i = 0; i <saticiListesi.size() ; i++) {
@@ -210,7 +211,7 @@ public class HepsiBuradaApp extends TestBaseRapor  {
             waitJava(3);
         }
         Log.info("Kullanici Ekledigi Urunleri Siler");
-        Driver.quitAppiumDriver();
+
         Log.endTestCase("Kullanici Olmadan Giris Yapıp Sepeti Dogrulama");
     }
 

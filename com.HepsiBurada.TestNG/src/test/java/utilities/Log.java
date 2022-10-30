@@ -14,7 +14,7 @@ public class Log {
 
     public static void startTestCase(String sTestCaseName){
 
-        log.info("******************         "+sTestCaseName+" Basladı         ******************");
+        log.info("******************         "+sTestCaseName+" Basladi         ******************");
 
 
         HepsiBuradaTest.extentTest = HepsiBuradaTest.extentReports.createTest(sTestCaseName);

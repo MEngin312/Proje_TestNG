@@ -89,9 +89,9 @@ public class ReusableMethods {
     }
 
     //===============Explicit Wait==============//
-    public static WebElement waitForVisibility(WebElement element, int timeout) {
+    public static void waitForVisibility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
-        return wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public static WebElement waitForVisibility(By locator, int timeout) {
@@ -99,9 +99,9 @@ public class ReusableMethods {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static WebElement waitForClickablility(WebElement element, int timeout) {
+    public static void waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
-        return wait.until(ExpectedConditions.elementToBeClickable(element));
+         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public static WebElement waitForClickablility(By locator, int timeout) {

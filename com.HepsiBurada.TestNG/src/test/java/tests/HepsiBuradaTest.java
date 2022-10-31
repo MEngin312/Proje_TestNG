@@ -3,8 +3,7 @@ package tests;
 import org.testng.annotations.Test;
 import pages.HepsiBuradaPage;
 import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.Log;
+import utilities.Logger;
 import utilities.TestBaseRapor;
 
 public class HepsiBuradaTest extends TestBaseRapor {
@@ -12,53 +11,53 @@ public class HepsiBuradaTest extends TestBaseRapor {
      HepsiBuradaPage hb;
 
      @Test
-    public void girisYaparakTest(){
+    public void giris_Yaparak_Test(){
          hb=new HepsiBuradaPage();
-         Log.startTestCase("Kullanici, Giris Yaparak Sepet Dogrulama Testi");
+         Logger.startTestCase("Kullanici, Giris Yaparak Sepet Dogrulama Testi");
 
-         hb.istenilenSayfayaGitme();
-         Log.info("Kullanici "+ConfigReader.getProperty("hepsiUrl")+" sayfasina gider.");
+         hb.istenilen_Siteye_Git(ConfigReader.getProperty("hepsiUrl"));
+         Logger.info("Kullanici "+ConfigReader.getProperty("hepsiUrl")+" sayfasina gider.");
 
-         hb.girisYapma();
-         Log.assertLog("Kullanici olarak giris yapma ve dogrulama.");
+         hb.giris_Yap();
+         Logger.assertLog("Kullanici olarak giris yapma ve dogrulama.");
 
-         hb.aramaYapipUrunSecme();
-         Log.info("Kullanici "+ConfigReader.getProperty("arananKelime")+" kelimesini aratir ve urune tiklar.");
+         hb.arama_Yap_Urun_Sec();
+         Logger.info("Kullanici "+ConfigReader.getProperty("arananKelime")+" kelimesini aratir ve urune tiklar.");
 
-         hb.secilenUrunuSepeteEklemevefarkliSaticiEkleme();
-         Log.info("Kullanici sectigi urunu sepete ekler ve varsa farkli saticidan ikinci urunu ekler.");
+         hb.secilen_Urunu_Sepete_Ekle_ve_farkli_Saticidan_Ekle();
+         Logger.info("Kullanici sectigi urunu sepete ekler ve varsa farkli saticidan ikinci urunu ekler.");
 
-         hb.sepetimGitveSecilenUrunleriDogrulama();
-         Log.assertLog("Kullanici sepete gider ve bilgileri dogrular.");
+         hb.sepetim_Git_ve_Secilen_Urunleri_Dogrula();
+         Logger.assertLog("Kullanici sepete gider ve bilgileri dogrular.");
 
-         hb.secilenUrunleriSilme();
-         Log.info("Kullanici sectigi urunleri sepetten siler.");
-         Log.endTestCase("Kullanici, Giris Yaparak Sepet Dogrulama Testi");
+         hb.secilen_Urunleri_Sil();
+         Logger.info("Kullanici sectigi urunleri sepetten siler.");
+         Logger.endTestCase("Kullanici, Giris Yaparak Sepet Dogrulama Testi");
      }
 
 
 
      @Test
-     public void girisYapmayarakTest(){
+     public void giris_Yapmadan_Test(){
           hb=new HepsiBuradaPage();
-          Log.startTestCase("Kullanici, Giris Yapmayarak Sepet Dogrulama Testi");
+          Logger.startTestCase("Kullanici, Giris Yapmayarak Sepet Dogrulama Testi");
 
-          hb.istenilenSayfayaGitme();
-          Log.info("Kullanici "+ConfigReader.getProperty("hepsiUrl")+" sayfasina gider.");
+          hb.istenilen_Siteye_Git(ConfigReader.getProperty("hepsiUrl"));
+          Logger.info("Kullanici "+ConfigReader.getProperty("hepsiUrl")+" sayfasina gider.");
 
 
-          hb.aramaYapipUrunSecme();
-          Log.info("Kullanici "+ConfigReader.getProperty("arananKelime")+" kelimesini aratir ve urune tiklar.");
+          hb.arama_Yap_Urun_Sec();
+          Logger.info("Kullanici "+ConfigReader.getProperty("arananKelime")+" kelimesini aratir ve urune tiklar.");
 
-          hb.secilenUrunuSepeteEklemevefarkliSaticiEkleme();
-          Log.info("Kullanici sectigi urunu sepete ekler ve varsa farkli saticidan ikinci urunu ekler.");
+          hb.secilen_Urunu_Sepete_Ekle_ve_farkli_Saticidan_Ekle();
+          Logger.info("Kullanici sectigi urunu sepete ekler ve varsa farkli saticidan ikinci urunu ekler.");
 
-          hb.sepetimGitveSecilenUrunleriDogrulama();
-          Log.assertLog("Kullanici sepete gider ve bilgileri dogrular.");
+          hb.sepetim_Git_ve_Secilen_Urunleri_Dogrula();
+          Logger.assertLog("Kullanici sepete gider ve bilgileri dogrular.");
 
-          hb.secilenUrunleriSilme();
-          Log.info("Kullanici sectigi urunleri sepetten siler.");
-          Log.endTestCase("Kullanici, Giris Yaparak Sepet Dogrulama Testi");
+          hb.secilen_Urunleri_Sil();
+          Logger.info("Kullanici sectigi urunleri sepetten siler.");
+          Logger.endTestCase("Kullanici, Giris Yaparak Sepet Dogrulama Testi");
      }
 
 

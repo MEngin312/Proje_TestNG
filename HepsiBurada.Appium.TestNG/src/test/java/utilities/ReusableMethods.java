@@ -82,7 +82,7 @@ public class ReusableMethods {
     }
 
     public static void tapOn(MobileElement element) {
-       // waitToBeClickable(element, 15);
+        waitToBeClickable(element, 15);
         element.click();
     }
     public static void tapOnText(String text) {

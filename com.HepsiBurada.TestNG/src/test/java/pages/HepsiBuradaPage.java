@@ -37,7 +37,7 @@ public class HepsiBuradaPage {
     private WebElement arananUrun;
     @FindBy(xpath = "//h1[@id='product-name']")
     private WebElement secilenUrunBaslik;
-    @FindBy(xpath = "(//span//a)[4]")
+    @FindBy(xpath = "//span[@class='seller']//span//a")
     private WebElement ilkSatici;
     @FindBy(xpath = "//button[@id='addToCart']")
     private WebElement ilkSaticiSepetEkle;
@@ -77,12 +77,12 @@ public class HepsiBuradaPage {
     private final String  saticiDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("saticiDosyasi");
     private final String  secilenUrunDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("secilenUrunDosyasi");
 
-    public void istenilenSayfayaGitme(){
-        Driver.getDriver().get(ConfigReader.getProperty("hepsiUrl"));
+    public void istenilen_Siteye_Git(String url){
+        Driver.getDriver().get(url);
         cerez.click();
     }
 
-    public  void girisYapma(){
+    public  void giris_Yap(){
 
         girisButonu.click();
         girisYapButonu.click();
@@ -94,19 +94,20 @@ public class HepsiBuradaPage {
         ilkWindowDegeri=Driver.getDriver().getWindowHandle();
     }
 
-    public  void aramaYapipUrunSecme(){
+    public  void arama_Yap_Urun_Sec(){
 
         aramaKutucugu.sendKeys(ConfigReader.getProperty("arananKelime"), Keys.ENTER);
         arananUrun.click();
 
     }
 
-    public  void secilenUrunuSepeteEklemevefarkliSaticiEkleme (){
+    public  void secilen_Urunu_Sepete_Ekle_ve_farkli_Saticidan_Ekle(){
 
-        ikinciPencereGecme(ilkWindowDegeri);
+        acilan_ikinci_Pencereye_Gec(ilkWindowDegeri);
 
         WriteToTxt.saveAllData(secilenUrunDosyasi,secilenUrunBaslik.getText());
         List<String> saticiList=new ArrayList<>();
+        ReusableMethods.waitForVisibility(ilkSatici,15);
         saticiList.add(ilkSatici.getText().toLowerCase(Locale.ENGLISH));
         ReusableMethods.hooverByJS(ilkSaticiSepetEkle);
         try {
@@ -140,7 +141,7 @@ public class HepsiBuradaPage {
 
     }
 
-    public void sepetimGitveSecilenUrunleriDogrulama(){
+    public void sepetim_Git_ve_Secilen_Urunleri_Dogrula(){
         ReusableMethods.pageUp();
         sepetim.click();
         String secilenUrunYazisi=ReadTxt.getText(secilenUrunDosyasi);
@@ -155,7 +156,7 @@ public class HepsiBuradaPage {
 
 
     }
-    public void secilenUrunleriSilme(){
+    public void secilen_Urunleri_Sil(){
         int sayi=ReadTxt.getTextList(saticiDosyasi).size();
         for (int i = 0; i <sayi ; i++) {
             ReusableMethods.waitFor(3);
@@ -164,7 +165,7 @@ public class HepsiBuradaPage {
 
     }
 
-    public  void ikinciPencereGecme(String window){
+    public  void acilan_ikinci_Pencereye_Gec(String window){
 
         Set<String> windowsSet=Driver.getDriver().getWindowHandles();
         for (String each:windowsSet) {

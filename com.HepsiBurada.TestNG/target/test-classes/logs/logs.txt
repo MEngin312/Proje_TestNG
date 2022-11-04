@@ -20,22 +20,3 @@
 2022-11-03 20:06:46 INFO  Logger:33 - Kullanici sepete gider ve bilgileri dogrular.
 2022-11-03 20:06:49 INFO  Logger:55 - Kullanici sectigi urunleri sepetten siler.
 2022-11-03 20:06:49 INFO  Logger:25 - ******************         Kullanici, Giris Yaparak Sepet Dogrulama Testi bitti         ******************
-2022-11-03 20:24:40 INFO  Utils:112 - [TestNG] Running:
-  E:\FinalCase\com.HepsiBurada.TestNG\src\hepsiburadaTest.xml
-
-2022-11-03 20:24:41 INFO  WebDriverManager:1093 - Using chromedriver 107.0.5304.62 (resolved driver for Chrome 107)
-2022-11-03 20:24:41 INFO  WebDriverManager:1148 - Exporting webdriver.chrome.driver as C:\Users\Lenovo\.cache\selenium\chromedriver\win32\107.0.5304.62\chromedriver.exe
-2022-11-03 20:24:45 INFO  Logger:16 - ******************         Kullanici, Giris Yapmayarak Sepet Dogrulama Testi Basladi         ******************
-2022-11-03 20:24:53 INFO  Logger:55 - Kullanici https://www.hepsiburada.com sayfasina gider.
-2022-11-03 20:25:02 INFO  Logger:55 - Kullanici sandalet kelimesini aratir ve urune tiklar.
-2022-11-03 20:25:30 INFO  Logger:55 - Kullanici sectigi urunu sepete ekler ve varsa farkli saticidan ikinci urunu ekler.
-2022-11-03 20:25:32 INFO  Logger:33 - Kullanici sepete gider ve bilgileri dogrular.
-2022-11-03 20:25:35 INFO  Logger:55 - Kullanici sectigi urunleri sepetten siler.
-2022-11-03 20:25:35 INFO  Logger:25 - ******************         Kullanici, Giris Yaparak Sepet Dogrulama Testi bitti         ******************
-2022-11-03 20:25:37 INFO  WebDriverManager:1093 - Using chromedriver 107.0.5304.62 (resolved driver for Chrome 107)
-2022-11-03 20:25:37 INFO  WebDriverManager:1148 - Exporting webdriver.chrome.driver as C:\Users\Lenovo\.cache\selenium\chromedriver\win32\107.0.5304.62\chromedriver.exe
-2022-11-03 20:25:39 INFO  Logger:16 - ******************         Kullanici, Giris Yaparak Sepet Dogrulama Testi Basladi         ******************
-2022-11-03 20:25:47 INFO  Logger:55 - Kullanici https://www.hepsiburada.com sayfasina gider.
-2022-11-03 20:26:00 INFO  Logger:33 - Kullanici olarak giris yapma ve dogrulama.
-2022-11-03 20:26:09 INFO  Logger:55 - Kullanici sandalet kelimesini aratir ve urune tiklar.
-2022-11-03 20:26:34 INFO  Logger:55 - Kullanici sectigi urunu sepete ekler ve varsa farkli saticidan ikinci urunu ekler.

@@ -45,7 +45,7 @@ public class HepsiBuradaPage {
     private WebElement ikinciSatici;
     @FindBy(xpath = "(//button[@class='add-to-basket button small'])[1]")
     private WebElement ikinciSaticiSepetEkle;
-    @FindBy(className = "checkoutui-Modal-2iZXl")
+    @FindBy(xpath = "//h1/a")
     private WebElement sepetGitKapatma;
     @FindBy(xpath = "//span[@id='shoppingCart']")
     private WebElement sepetim;

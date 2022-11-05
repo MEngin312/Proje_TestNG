@@ -12,13 +12,14 @@ OOP(object oriented programming) konseptine uyarak  POM(page object model) dizay
 - [Test Adımları](#Test-Adımları)
 - [Selenium Testi](#Selenium-Testi)
 - [Appium testi](#Appium-testi)
+- [Cihaz Bilgisi](#hepsiburada-uygulaması-cihaz-bilgileri)
  
  
  
  
  <hr/>
  
- ### FrameWorks İçerik
+ ## FrameWorks İçerik
  
 ![Screenshot_2](https://user-images.githubusercontent.com/101714396/200123138-88df19a1-3f13-4d58-b1df-44e952a68bae.jpg)
 
@@ -59,7 +60,7 @@ burası sayaesinde tüm kodlara erişimi sağlayabiliriz.
 
 <hr/>
 
-### Test Adımları
+## Test Adımları
 
 <br/>
 
@@ -92,7 +93,7 @@ burası sayaesinde tüm kodlara erişimi sağlayabiliriz.
 
 
 
-# Selenium Testi<br/>
+## Selenium Testi<br/>
 
 Java11  ve Maven projesi oluşturulup TestNg framework kullanılarak oluşturulmuştur.
 <br/>
@@ -119,7 +120,7 @@ Java11  ve Maven projesi oluşturulup TestNg framework kullanılarak oluşturulm
 
 <hr/>
 
-# Appium testi<br/>
+## Appium testi<br/>
 
 Java8  ve Maven projesi oluşturulup TestNG framework kullanılarak oluşturulmuştur. 
 <br/>
@@ -147,7 +148,7 @@ Java8  ve Maven projesi oluşturulup TestNG framework kullanılarak oluşturulmu
 
 <br/>
 
-### hepsiburada uygulaması <br/>
+### hepsiburada uygulaması cihaz bilgileri <br/>
 
 GENYMOTİON uygulası kurularak burda <br/>
 Samsung Galaxy S10 kuruldu<br/>

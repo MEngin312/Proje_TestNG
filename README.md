@@ -4,7 +4,7 @@
 
 [HepsiBurada](https://www.hepsiburada.com) sitesinin testlerini gerçekleştirdiğimiz bu projemizde,
 [TestNG](https://testng.org/doc/documentation-main.html#testng-xml) framework ile çalışıldı.
-OOP(object oriented programming) konseptine uyarak  POM(page object model) dizayn modeli kullanılmıştır. Test adımlRI HEM Selenium kullanılarak webden yapıldı hemde Appium kullanılarak [hepsiburada uygulaması](https://play.google.com/store/apps/details?id=com.pozitron.hepsiburada&gl=TR) üzerinden yapıldı. 
+OOP(object oriented programming) konseptine uyarak  POM(page object model) dizayn modeli kullanılmıştır. Test adımları hem Selenium kullanılarak webden yapıldı hemde Appium kullanılarak [hepsiburada uygulaması](https://play.google.com/store/apps/details?id=com.pozitron.hepsiburada&gl=TR) üzerinden yapıldı. 
 
 ## Proje  Tanıtımı
  
@@ -50,13 +50,21 @@ ve  assert edilecek bilgilerin sürekli olarak eklendiği <b> testdata dosyası 
 
 ![Screenshot_8](https://user-images.githubusercontent.com/101714396/200123427-2b9d61c2-84d9-4766-af96-a3c175f080ed.jpg)
 
-### <b> [configuration.properties](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/configuration.properties) </b>
+###  [configuration.properties](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/configuration.properties) 
 properties dosyamızda sürekli kullandığımız variablelarımız bulunmakta , bu veriabları kullanmak için properties dosyası <b> Key  =  value </b> olaraka oluşturulmakta ,burdaki bilgileri başaka classlara çağırabilmek için utilities dosyasından
 <b> ConfigReader </b> classı çağırırlara içindeki method saysınde bu bosyada bulunan bilgileri istediğimiz yerlere çağırabiliriz.
 
-## [pom.xml](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/pom.xml)
+![Screenshot_12](https://user-images.githubusercontent.com/101714396/200138192-5f420192-03e9-4795-8d36-3d124b5ef725.jpg)
+
+### [pom.xml](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/pom.xml)
 tüm çalışmlaraımızın ve kodlarımızın bilgilerinin bulunduğu bu dosyada aslında kullanmak istediğimiz kodalrın kütüphanesini  <b> dependencies </b> tagının içerisine yerleştirip güncel bilgilerini sürekli olarak kendimizde tutabiliriz.
 burası sayaesinde tüm kodlara erişimi sağlayabiliriz.
+
+### [Testleri calıştırma xml dosyaları](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/src/hepsiburadaTest.xml)
+Bu dosyaları oluşturmanın ilk kuralı dosya ismi yazılır sonuna <b> .xml </b> yazılır. Daha sonra içerisine html doyası gibi düzenlemeler yaparak
+<b> class </b>,<b> packages </b>,<b> method </b>,<b> Paralel test </b> ve <b> Crossbrowser </b> olarak testlerimizi çalıştırabiliriz 
+
+![Screenshot_11](https://user-images.githubusercontent.com/101714396/200138097-0cc21b4c-8080-430c-95ed-841aadd59af5.jpg)
 
 <hr/>
 
@@ -95,8 +103,12 @@ burası sayaesinde tüm kodlara erişimi sağlayabiliriz.
 
 ## Selenium Testi<br/>
 
-Java11  ve Maven projesi oluşturulup TestNg framework kullanılarak oluşturulmuştur.
+Java11  ve Maven projesi oluşturulup TestNg framework kullanılarak oluşturulmuştur.Selenium ile yaptığımız testlerde Logger classı ile TestRaporu birleştirilmiştir.Bu sayede Loglama yaparken yanında raporda alabilmekteyiz.Test classımızın içerinde oluşturduğumuz @Test annotation lu methodlarımız ile direk testimizi çalıştırabilmekteyiz.Page classı'mızda oluşturduğumuz fonsiyonel methodlar ile her adımda başka yere çağırarak çalışmasını sağlayabiliriz.
 <br/>
+
+![Screenshot_9](https://user-images.githubusercontent.com/101714396/200137800-8eedd375-f671-46b4-a6e3-2a6f88f05bbd.jpg)
+![Screenshot_10](https://user-images.githubusercontent.com/101714396/200137893-3c270954-ed1d-4d87-ae24-80686944b644.jpg)
+
 
 ### kütüphane <br/>
 
@@ -122,16 +134,17 @@ Java11  ve Maven projesi oluşturulup TestNg framework kullanılarak oluşturulm
 
 ## Appium testi<br/>
 
-Java8  ve Maven projesi oluşturulup TestNG framework kullanılarak oluşturulmuştur. 
+Java8  ve Maven projesi oluşturulup TestNG framework kullanılarak oluşturulmuştur. Appium ile yaptığımız testlerde Logger classı ile TestRaporu birleştirilmiştir.Bu sayede Loglama yaparken yanında raporda alabilmekteyiz.Test classımızın içerinde oluşturduğumuz @Test annotation lu methodlarımız ile direk testimizi çalıştırabilmekteyiz.
 <br/>
 
 ### kütüphane <br/>
 
 - [io.appium](https://mvnrepository.com/artifact/io.appium/java-client)
-- testng
-- extentreports
-- slf4j-api
-- slf4j-reload4j
+- [testng](https://mvnrepository.com/artifact/org.testng/testng)
+- [extentreports](https://mvnrepository.com/artifact/com.aventstack/extentreports)
+- [slf4j-api](https://mvnrepository.com/artifact/org.slf4j/slf4j-api)
+- [slf4j-reload4j](https://mvnrepository.com/artifact/org.slf4j/slf4j-reload4j)
+
 
 
 <br/>

@@ -2,10 +2,9 @@
 <hr/>
 
 
-
 [HepsiBurada](https://www.hepsiburada.com) sitesinin testlerini gerçekleştirdiğimiz bu projemizde,
 [TestNG](https://testng.org/doc/documentation-main.html#testng-xml) framework ile çalışıldı.
-OOP(object oriented programming) konseptine uyarak  POM(page object model) dizayn modeli kullanılmıştır. 
+OOP(object oriented programming) konseptine uyarak  POM(page object model) dizayn modeli kullanılmıştır. Test adımlRI HEM Selenium kullanılarak webden yapıldı hemde Appium kullanılarak [hepsiburada uygulaması](https://play.google.com/store/apps/details?id=com.pozitron.hepsiburada&gl=TR) üzerinden yapıldı. 
 
  
  

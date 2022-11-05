@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -43,6 +44,7 @@ public class Driver {
                     options.addArguments("--disable-blink-features");
                     options.addArguments("--disable-blink-features=AutomationControlled");
                     options.addArguments("--disable-extensions");
+                    options.addArguments("--disable-notifications");
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(options);
                     break;
@@ -51,8 +53,13 @@ public class Driver {
                     driver=new SafariDriver();
                     break;
                 case "firefox":
+                    FirefoxOptions options1=new FirefoxOptions();
+                    options1.addArguments("--disable-blink-features");
+                    options1.addArguments("--disable-blink-features=AutomationControlled");
+                    options1.addArguments("--disable-extensions");
+                    options1.addArguments("--disable-notifications");
                     WebDriverManager.firefoxdriver().setup();
-                    driver=new FirefoxDriver();
+                    driver=new FirefoxDriver(options1);
                     break;
                 case "edge":
                     WebDriverManager.edgedriver().setup();

@@ -45,7 +45,7 @@ public class HepsiBuradaPage {
     private WebElement ikinciSatici;
     @FindBy(xpath = "(//button[@class='add-to-basket button small'])[1]")
     private WebElement ikinciSaticiSepetEkle;
-    @FindBy(xpath = "//h1/a")
+    @FindBy(xpath = "//h1//a")
     private WebElement sepetGitKapatma;
     @FindBy(xpath = "//span[@id='shoppingCart']")
     private WebElement sepetim;
@@ -126,6 +126,7 @@ public class HepsiBuradaPage {
                 saticiList.add(ikinciSatici.getText().toLowerCase(Locale.ENGLISH));
                 ikinciSaticiSepetEkle.click();
                 try {
+                    ReusableMethods.waitForClickablility(sepetGitKapatma,10);
                     if (sepetGitKapatma.isDisplayed()) {
                         sepetGitKapatma.click();
                     }

@@ -8,8 +8,8 @@ OOP(object oriented programming) konseptine uyarak  POM(page object model) dizay
 
 ## Proje  Tanıtımı
  
-- [FrameWorks](#FrameWorksİçerik)
-- [Test Adımları](#TestAdımları)
+- [FrameWorks](#FrameWorks-İçerik)
+- [Test Adımları](#Test-Adımları)
  
  
  

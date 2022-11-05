@@ -8,15 +8,15 @@ OOP(object oriented programming) konseptine uyarak  POM(page object model) dizay
 
 ## Proje  Tanıtımı
  
-- [FrameWorks](#FrameWorks)
-- [Test Adımları](#Test)
+- [FrameWorks](#FrameWorksİçerik)
+- [Test Adımları](#TestAdımları)
  
  
  
  
  <hr/>
  
- ## FrameWorks İçerik
+ ### FrameWorks İçerik
  
 ![Screenshot_2](https://user-images.githubusercontent.com/101714396/200123138-88df19a1-3f13-4d58-b1df-44e952a68bae.jpg)
 
@@ -57,7 +57,7 @@ burası sayaesinde tüm kodlara erişimi sağlayabiliriz.
 
 <hr/>
 
-## Test Adımları
+### Test Adımları
 
 <br/>
 

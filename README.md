@@ -148,7 +148,8 @@ Java8  ve Maven projesi oluşturulup TestNG framework kullanılarak oluşturulmu
 
 <br/>
 
-### Cihaz bilgileri <br/>
+### Cihaz bilgileri 
+<br/>
 
 GENYMOTİON uygulası kurularak burda <br/>
 Samsung Galaxy S10 kuruldu<br/>

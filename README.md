@@ -12,7 +12,7 @@ OOP(object oriented programming) konseptine uyarak  POM(page object model) dizay
 - [Test Adımları](#Test-Adımları)
 - [Selenium Testi](#Selenium-Testi)
 - [Appium testi](#Appium-testi)
-- [Cihaz Bilgisi](#hepsiburada-uygulaması-cihaz-bilgileri)
+- [Cihaz Bilgisi](#Cihaz-bilgileri)
  
  
  
@@ -148,7 +148,7 @@ Java8  ve Maven projesi oluşturulup TestNG framework kullanılarak oluşturulmu
 
 <br/>
 
-### hepsiburada uygulaması cihaz bilgileri <br/>
+### Cihaz bilgileri <br/>
 
 GENYMOTİON uygulası kurularak burda <br/>
 Samsung Galaxy S10 kuruldu<br/>

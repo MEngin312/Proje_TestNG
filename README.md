@@ -13,36 +13,36 @@ OOP(object oriented programming) konseptine uyarak  POM(page object model) dizay
 
 <br/>
 
-### pages dosyası <br/>
+### [pages dosyası](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/src/test/java/pages/HepsiBuradaPage.java) <br/>
 Bu dosyamızda elimizde bulunan sitenin testlerini gerçekleştireceğimiz elemenlerin locatelerini sakladığımız classlarımız bulunmakta.İstediğimiz locate almak için oluşturduğumuz clasın adında constructar oluşturuyoruz ve içine <b> PageFactory </b> clasını çağırıp
 içerisine oluşturduğumuz driver çağırıp burada olduğunu belli ettiğimiz <b> this </b> key kullanılır. locatelerimizinde çağırabilinmesi için de <b> FindBy </b> notasyonu ile locatelerimizi oluşturabiliriz.İçerisine istediğimiz fonsiyonları gerçekleştirebilecek methodları oluşturabiliriz.
 
 ![Screenshot_5](https://user-images.githubusercontent.com/101714396/200123389-f0b300e6-3040-4097-bc2e-7176a0b510c4.jpg)
 
-### tests dosyası <br/>
+### [tests dosyası](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/src/test/java/tests/HepsiBuradaTest.java) <br/>
 Burda ise tüm kodlarımızın çalışmasını sağlayan methodlarımızın bulunduğu classlarımız vardır.Locatelerimizi , driverımız buraya çağırarak yapmak istediğimiz adımların kodlarını burda yazıyoruz.
 testlerin çalışması için TestNG kütüphanesinden <b> @Test </b> annotation kullanıyoruz.
 
 ![Screenshot_6](https://user-images.githubusercontent.com/101714396/200123396-ba4aecc3-9c83-4eae-bf57-18f2f4340cf5.jpg)
 
  
-### utilities dosyası <br/>
+### [utilities dosyası](https://github.com/clgnmmr/com.A101.FinalCase/tree/master/com.HepsiBurada.TestNG/src/test/java/utilities) <br/>
 Yardımcı classımız bu dosyamızda bize sürekli lazım olan classlarımız ve methodlarımız bulunmaktadır. İçerisinde  projemizi daha anlaşılır hale getirecek classlarımız ve methodalrımız vardır bunlar
 <b> Driver.class </b> , <b> ConfigReader.class</b> , <b> ReusableMehod.class </b>, <b> Logger.class </b>  vb.  dosyalarımız bulunmaktadır. 
 
 ![Screenshot_7](https://user-images.githubusercontent.com/101714396/200123412-c0f90911-d925-40c6-8b6c-bec0d874847d.jpg)
 
-### resources dosyası <br/>
+### [resources dosyası](https://github.com/clgnmmr/com.A101.FinalCase/tree/master/com.HepsiBurada.TestNG/src/test/resources) <br/>
 Dosyamıızn içerinde Log için aldığımız dataları (html,txt vb) bulunduran <b> log dosyası </b> bulunur. raporlar için <b> rapor dosyası </b> , hata alındığında o locate'in direk screenshotının olduğu <b> screenshot dosyası </b> 
 ve  assert edilecek bilgilerin sürekli olarak eklendiği <b> testdata dosyası </b> bulunmaktadır. 
 
 ![Screenshot_8](https://user-images.githubusercontent.com/101714396/200123427-2b9d61c2-84d9-4766-af96-a3c175f080ed.jpg)
 
-### <b> configuration.properties </b>
+### <b> [configuration.properties](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/configuration.properties) </b>
 properties dosyamızda sürekli kullandığımız variablelarımız bulunmakta , bu veriabları kullanmak için properties dosyası <b> Key  =  value </b> olaraka oluşturulmakta ,burdaki bilgileri başaka classlara çağırabilmek için utilities dosyasından
 <b> ConfigReader </b> classı çağırırlara içindeki method saysınde bu bosyada bulunan bilgileri istediğimiz yerlere çağırabiliriz.
 
-## pom.xml
+## [pom.xml](https://github.com/clgnmmr/com.A101.FinalCase/blob/master/com.HepsiBurada.TestNG/pom.xml)
 tüm çalışmlaraımızın ve kodlarımızın bilgilerinin bulunduğu bu dosyada aslında kullanmak istediğimiz kodalrın kütüphanesini  <b> dependencies </b> tagının içerisine yerleştirip güncel bilgilerini sürekli olarak kendimizde tutabiliriz.
 burası sayaesinde tüm kodlara erişimi sağlayabiliriz.
 

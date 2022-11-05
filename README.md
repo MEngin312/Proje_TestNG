@@ -10,6 +10,8 @@ OOP(object oriented programming) konseptine uyarak  POM(page object model) dizay
  
 - [FrameWorks](#FrameWorks-İçerik)
 - [Test Adımları](#Test-Adımları)
+- [Selenium Testi](#Selenium-Testi)
+- [Appium testi](#Appium-testi)
  
  
  

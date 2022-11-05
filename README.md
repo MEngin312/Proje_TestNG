@@ -6,7 +6,16 @@
 [TestNG](https://testng.org/doc/documentation-main.html#testng-xml) framework ile çalışıldı.
 OOP(object oriented programming) konseptine uyarak  POM(page object model) dizayn modeli kullanılmıştır. Test adımlRI HEM Selenium kullanılarak webden yapıldı hemde Appium kullanılarak [hepsiburada uygulaması](https://play.google.com/store/apps/details?id=com.pozitron.hepsiburada&gl=TR) üzerinden yapıldı. 
 
+## Proje  Tanıtımı
  
+- [FrameWorks](#FrameWorks)
+ 
+ 
+ 
+ 
+ <hr/>
+ 
+ ## FrameWorks İçerik
  
 ![Screenshot_2](https://user-images.githubusercontent.com/101714396/200123138-88df19a1-3f13-4d58-b1df-44e952a68bae.jpg)
 
@@ -87,12 +96,12 @@ Java11  ve Maven projesi oluşturulup TestNg framework kullanılarak oluşturulm
 
 ### kütüphane <br/>
 
-- selenium-java
-- webdrivermanager
-- testng
-- extentreports
-- slf4j-api
-- slf4j-reload4j
+- [selenium-java](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java)
+- [webdrivermanager](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager)
+- [testng](https://mvnrepository.com/artifact/org.testng/testng)
+- [extentreports](https://mvnrepository.com/artifact/com.aventstack/extentreports)
+- [slf4j-api](https://mvnrepository.com/artifact/org.slf4j/slf4j-api)
+- [slf4j-reload4j](https://mvnrepository.com/artifact/org.slf4j/slf4j-reload4j)
 
 <br/>
 
@@ -114,7 +123,7 @@ Java8  ve Maven projesi oluşturulup TestNG framework kullanılarak oluşturulmu
 
 ### kütüphane <br/>
 
-- io.appium
+- [io.appium](https://mvnrepository.com/artifact/io.appium/java-client)
 - testng
 - extentreports
 - slf4j-api
@@ -142,6 +151,7 @@ Samsung Galaxy S10 kuruldu<br/>
 özellikler = Android 10(Api29) yüklendi ,   ekran  1440 X 3040  , 560 Dpi <br/>
 A101 uygulamsı telefona sürükleyip bırakıldı kurulduktan sonra test işlemleri başlatıldı.<br/>
 <b>LÜTFEN BU ÖZELLİKLERE SAHİP TELEFONU KURUP TEST YAPINIZ.</b>
+
 <br/>
 
 ![Screenshot_11](https://user-images.githubusercontent.com/101714396/193453938-0b47e3db-66fb-4b47-a868-7014f91fc477.jpg)

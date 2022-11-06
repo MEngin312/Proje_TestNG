@@ -14,6 +14,11 @@ public class HepsiBuradaPage {
     public HepsiBuradaPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+    /*
+    Tum test casede bulunan sayfalarin locateleri her sayfa icin ayrilarak yapilir ama bu testcase kucuk bir parca oldugu icin
+     bende tum locateleri buraya aldim,Locatelerimi @FindBy annotation kullanarak aldim. Locateleri gorebilmek icin ustte olusturulan
+     constructor icerisine PageFactory classında methodlar cagirarak ,driveri buraya cagiriyoruz
+     */
 
     @FindBy(xpath = "//div[@id='myAccount']")
     private WebElement girisButonu;
@@ -57,31 +62,22 @@ public class HepsiBuradaPage {
     private WebElement urunSilme;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /*
+    Ustteki kodlarda locate alarak  asagida her fonksiyon icin birer method urettim, methodlar static olmadigi icin direk icerisine locateleri çagırabiliyorum
+    */
 
 
     private  String ilkWindowDegeri;
     private final String  saticiDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("saticiDosyasi");
     private final String  secilenUrunDosyasi =System.getProperty("user.dir")+ConfigReader.getProperty("secilenUrunDosyasi");
 
+    // verdiginiz url'e gore siteye gider ve cerez var ise onu handle eder
     public void istenilen_Siteye_Git(String url){
         Driver.getDriver().get(url);
         cerez.click();
     }
 
+    // cagirdiginiz yerde giris yapmak icin tiklama yapar ve gerekli bilgileri girerek giris yapmanizi saglar.
     public  void giris_Yap(){
 
         girisButonu.click();
@@ -94,6 +90,7 @@ public class HepsiBuradaPage {
         ilkWindowDegeri=Driver.getDriver().getWindowHandle();
     }
 
+    // siteye girdikten sonra arama yapmak istediginiz kelimeyi configuration.properties dosyasindan alarak arama yapar ,
     public  void arama_Yap_Urun_Sec(){
 
         aramaKutucugu.sendKeys(ConfigReader.getProperty("arananKelime"), Keys.ENTER);
@@ -101,6 +98,9 @@ public class HepsiBuradaPage {
 
     }
 
+    // gelen urunlerden ilk urunu secer ve ikinci bir pencere acildiginda oraya gecer.
+    // secilen ilk urunun bilgilerini WriteTxt classi ile locale kayit eder ve varsa farkli saticininda bilgilerini alir.
+    // secilen urunu sepete ekler  eger varsa farkli saticidanda urun ekler
     public  void secilen_Urunu_Sepete_Ekle_ve_farkli_Saticidan_Ekle(){
 
         acilan_ikinci_Pencereye_Gec(ilkWindowDegeri);
@@ -142,6 +142,8 @@ public class HepsiBuradaPage {
 
     }
 
+    // sepetim sayfasında bulunan urunleri seuilen urunler ile dogrulugunu Assertions classi ile dogrular
+    // secilen urunlerin bilgilerini  ReadTxt classi ile okur ve alir ondan sonra sepetteki urunlerin bilgilerini alır ve assert eder
     public void sepetim_Git_ve_Secilen_Urunleri_Dogrula(){
         ReusableMethods.pageUp();
         sepetim.click();
@@ -157,6 +159,7 @@ public class HepsiBuradaPage {
 
 
     }
+    // dorulamalar bittikten sonra ve tüm işlemler bittikten sonra sepeteki urunleri sepetimden kaldirir.
     public void secilen_Urunleri_Sil(){
         int sayi=ReadTxt.getTextList(saticiDosyasi).size();
         for (int i = 0; i <sayi ; i++) {
@@ -166,6 +169,7 @@ public class HepsiBuradaPage {
 
     }
 
+    // ilk acilan pencerenin windowHandle degerini alir ve acilan ikinci sayfanin window handle degerini bulur ve driver 'i ikinci window'a gecirir.
     public  void acilan_ikinci_Pencereye_Gec(String window){
 
         Set<String> windowsSet=Driver.getDriver().getWindowHandles();

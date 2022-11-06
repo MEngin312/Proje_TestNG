@@ -15,17 +15,17 @@ import java.time.Duration;
 
 public class Driver {
     /*
-    pom da Driver icin  TestBase clasına extend etmk yerine driver clasından static methodlar kullanarak
-    driver oluşturup ,ilgili ayarların yapilmasi ve en sonda driverın kapatılması tercih edilmiştir
+    pom da Driver icin  driver clasından static methodlar kullanarak
+    driver olusturup ,ilgili ayarların yapilmasi ve en sonda driverin kapatilmasi tercih edilmistir
 
-    POM de Driver clasındaki getDriver() methoduna obje oluşturularak  kullanılmasını engellemek icin
-    Singleton pattern benimsenmiştir
+    POM de Driver clasindaki getDriver() methoduna obje olusturularak  kullanilmasini engellemek icin
+    Singleton pattern benimsenmistir
 
-    Singleton Pattern: tekli kullanım , bir classın farklı classlardan obje oluşturularak kullanımını engellemek için kullanılır
+    Singleton Pattern: tekli kullanım , bir classın farkli classlardan obje olusturularak kullanimini engellemek icin kullanilir
 
-    nunu sağlamak icin yapamamız gereken oldukça basit
-    obje oluşturmak icin kullanılan constructor ı private yaptığınızda
-    başka classlardan driver classında obje oluşturulması engellenmiş olur
+    bunu saglamak icin yapamamiz gereken oldukca basit
+    obje olusturmak icin kullanilan constructor ı private yaptiginizda
+    baska classlardan driver classında obje oluşturulması engellenmis olur
      */
     private Driver(){
 
@@ -38,6 +38,7 @@ public class Driver {
 
         if (driver == null) {
 
+            //configuration.properties dosyasında belirttigimiz browsera göre  alta ona gore secilen browserin  acilmasini saglar
             switch (ConfigReader.getProperty("browser")){
                 case "chrome":
                     ChromeOptions options=new ChromeOptions();

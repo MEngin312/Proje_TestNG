@@ -7,7 +7,12 @@ import java.util.Properties;
 public class ConfigReader {
 
 
-   public static Properties properties;
+//configuration.properties dosyasinda bulanan bilgileri key=value  sistemi icerinde
+// key vererek value'sunu istediginiz yere cagirmanizi saglayan classtir
+
+
+   public static Properties properties;// Properties classında obje olusturulur okunmak istenen dosya yolu verilir o dosyanın okunması saglanir.
+
    static {
        String dosyaYolu="configuration.properties";
 

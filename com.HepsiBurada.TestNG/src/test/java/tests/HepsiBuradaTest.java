@@ -7,12 +7,25 @@ import utilities.Logger;
 import utilities.TestBaseRapor;
 
 public class HepsiBuradaTest extends TestBaseRapor {
+     /*
+     Bu test class'imizda gerceklestirilen iki testimiz vardir
+     1.Test --> giris yaparak sepetimi dogrulama
+     2.Test --> giris yapmadan sepetimi dogrulama
 
-     HepsiBuradaPage hb;
+     burda Page clasimizin objesini olusturarak kod tekrarini onlemek adina  olusturdugumuz methodlari sirasi ile cagirarak islemlerimizi gerceklestirebiliyoruz
 
+     eger iki testin icine bakarsaniz ikisinin tek farkı giris_yap() methodunun olup olmamasi farklilik gosteriyor yani bu sayede dahapratik testler yazilabiliyor.
+
+     ve bu classimizda Loglama yapilmakta herhangi bir hata alindiginda hatanin nerde oldugunu anlamamizi saglayacak bir classimidir.Bununla birlikte
+     loglama ile Testrapor birlestirildi ve loglama yapilirken raporda beraberinde alinmaktadir.
+      */
+
+     HepsiBuradaPage hb; // page sayfasindan olusturulan objemiz yani koyteyner olusturulur her atamasi olusturulan her method icinde yapilir.
+
+     // TestNg ile @Test annotation kullanilarak direk kodların calismasini saglayabilmekteyiz bu sayede main method cagirmamiz gerekmiyor.
      @Test
     public void giris_Yaparak_Test(){
-         hb=new HepsiBuradaPage();
+         hb=new HepsiBuradaPage();// koyteyner atamasi method icinde  yapildi
          Logger.startTestCase("Kullanici, Giris Yaparak Sepet Dogrulama Testi");
 
          hb.istenilen_Siteye_Git(ConfigReader.getProperty("hepsiUrl"));
@@ -39,7 +52,7 @@ public class HepsiBuradaTest extends TestBaseRapor {
 
      @Test
      public void giris_Yapmadan_Test(){
-          hb=new HepsiBuradaPage();
+          hb=new HepsiBuradaPage();// koyteyner atamasi method icinde  yapildi
           Logger.startTestCase("Kullanici, Giris Yapmayarak Sepet Dogrulama Testi");
 
           hb.istenilen_Siteye_Git(ConfigReader.getProperty("hepsiUrl"));

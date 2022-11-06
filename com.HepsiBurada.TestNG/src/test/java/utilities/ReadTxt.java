@@ -9,6 +9,8 @@ import java.util.List;
 
 public class ReadTxt {
 
+    // istediginiz yere cagirdiginiz bu method locale de bulunan dosyayi okuyarak size getirir,tum bilgileri degilde en son kaydedilen bilgiyi çeker ve istediğiniz yere getirir.
+    //static oldugu icin class ismi le cagrilabilir.
     public static String getText(String dataFile) {
         String id ="";
         try {
@@ -33,6 +35,9 @@ public class ReadTxt {
         }
         return id;
     }
+
+    // istediginiz yere cagirdiginiz bu method locale de bulunan dosyayi okuyarak size getirir,tum bilgileri  ceker ve size getirir.
+    //static oldugu icin class ismi le cagrilabilir.
     public static List<String> getTextList(String dataFile) {
         List<String> idList =new ArrayList<>();
         try {

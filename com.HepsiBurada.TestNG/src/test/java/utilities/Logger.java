@@ -7,6 +7,10 @@ import tests.HepsiBuradaTest;
 
 
 public class Logger {
+    /*
+    slf4j  kutuphanesini cagirarak  burda direk kendimiz icin ozel bir log classimizi olusturduk
+    test basladi ve bitti gibi  methodlarimiz bulunmakta bunlara ek olarakta logalama icerisine raporlama cagrilarak beraberinde raporda alinmaktadir.
+     */
 
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(Logger.class.getName());
 

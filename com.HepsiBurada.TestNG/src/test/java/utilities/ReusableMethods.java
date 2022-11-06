@@ -232,6 +232,7 @@ public class ReusableMethods {
             }
         }
     }
+    // oncelikle verilen element gorunene kadar scroll yapar.locate gorundukten sonra click yapar.
     public static void hooverByJS(WebElement element) {
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         jse.executeScript("arguments[0].scrollIntoView()", element);
